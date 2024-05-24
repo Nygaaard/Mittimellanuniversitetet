@@ -1,1 +1,20 @@
-<p>home works!</p>
+<table>
+  <thead>
+    <tr>
+      <th>Kurskod</th>
+      <th>Kursnamn</th>
+      <th>Poäng</th>
+      <th>Ämne</th>
+      <th>Kursplan</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let course of courses">
+      <td>{{ course.courseCode }}</td>
+      <td>{{ course.courseCode }}</td>
+      <td>{{ course.points }}</td>
+      <td>{{ course.subject }}</td>
+      <td>{{ course.subject }}</td>
+    </tr>
+  </tbody>
+</table>
