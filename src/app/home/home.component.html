@@ -1,20 +1,32 @@
+<div class="search-div">
+  <label for="filter">Filtrera kurs</label>
+  <br />
+  <input
+    type="text"
+    id="filter"
+    [(ngModel)]="inputValue"
+    (input)="filterCourses()"
+    class="UserInput"
+  />
+</div>
+
 <table>
   <thead>
     <tr>
-      <th>Kurskod</th>
-      <th>Kursnamn</th>
-      <th>Poäng</th>
-      <th>Ämne</th>
+      <th (click)="sortByCode()">Kurskod</th>
+      <th (click)="sortNyName()">Kursnamn</th>
+      <th (click)="sortByPoints()">Poäng</th>
+      <th (click)="sortBySubject()">Ämne</th>
       <th>Kursplan</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let course of courses">
+    <tr *ngFor="let course of filteredCourses">
       <td>{{ course.courseCode }}</td>
-      <td>{{ course.courseCode }}</td>
+      <td>{{ course.courseName }}</td>
       <td>{{ course.points }}</td>
       <td>{{ course.subject }}</td>
-      <td>{{ course.subject }}</td>
+      <td>{{ course.syllabus }}</td>
     </tr>
   </tbody>
 </table>
