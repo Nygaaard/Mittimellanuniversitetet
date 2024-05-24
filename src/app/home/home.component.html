@@ -1,13 +1,28 @@
-<div class="search-div">
-  <label for="filter">Filtrera kurs</label>
-  <br />
-  <input
-    type="text"
-    id="filter"
-    [(ngModel)]="inputValue"
-    (input)="filterCourses()"
-    class="UserInput"
-  />
+<h2>Alla kurser:</h2>
+<div class="search-container">
+  <div class="search-div">
+    <label for="filter">Filtrera kurs</label>
+    <br />
+    <input
+      type="text"
+      id="filter"
+      [(ngModel)]="inputValue"
+      (input)="filterCourses()"
+      class="userInput"
+    />
+  </div>
+  <div class="select-div">
+    <label for="select-subject">Ämne:</label>
+    <select
+      id="select-subject"
+      [(ngModel)]="selectedSubject"
+      (change)="filterCourses()"
+    >
+      <option *ngFor="let subject of subjects" [value]="subject">
+        {{ subject }}
+      </option>
+    </select>
+  </div>
 </div>
 
 <table>
@@ -26,7 +41,7 @@
       <td>{{ course.courseName }}</td>
       <td>{{ course.points }}</td>
       <td>{{ course.subject }}</td>
-      <td>{{ course.syllabus }}</td>
+      <td><a href="{{ course.syllabus }}" target="_blank">Kursplan</a></td>
     </tr>
   </tbody>
 </table>

@@ -3,11 +3,12 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CoursesService } from '../services/courses.service';
 import { Course } from '../models/course';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -16,6 +17,8 @@ export class HomeComponent {
   courses: Course[] = [];
   filteredCourses: Course[] = [];
   inputValue: string = '';
+  subjects: string[] = [];
+  selectedSubject: string = '';
 
   constructor(private courseservive: CoursesService) {}
 
@@ -23,18 +26,24 @@ export class HomeComponent {
     this.courseservive.getCourses().subscribe((courses) => {
       this.courses = courses;
       this.filteredCourses = courses;
+      this.extractSubjects();
     });
   }
 
   //Method for filtering courses
   filterCourses(): void {
-    this.filteredCourses = this.courses.filter(
-      (course) =>
+    this.filteredCourses = this.courses.filter((course) => {
+      const matchesInput =
         course.courseName
           .toLowerCase()
-          .includes(this.inputValue.toLocaleLowerCase()) ||
-        course.courseCode.toLowerCase().includes(this.inputValue.toLowerCase())
-    );
+          .includes(this.inputValue.toLowerCase()) ||
+        course.courseCode.toLowerCase().includes(this.inputValue.toLowerCase());
+
+      const matchesSubject =
+        this.selectedSubject === '' || course.subject === this.selectedSubject;
+
+      return matchesInput && matchesSubject;
+    });
   }
 
   //Method for sort by course code
@@ -71,5 +80,13 @@ export class HomeComponent {
       if (a.subject > b.subject) return 1;
       return 0;
     });
+  }
+
+  extractSubjects(): void {
+    const subjectSet = new Set<string>();
+    this.courses.forEach((course) => {
+      subjectSet.add(course.subject);
+    });
+    this.subjects = Array.from(subjectSet);
   }
 }
