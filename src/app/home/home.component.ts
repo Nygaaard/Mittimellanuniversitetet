@@ -32,18 +32,25 @@ export class HomeComponent {
 
   //Method for filtering courses
   filterCourses(): void {
-    this.filteredCourses = this.courses.filter((course) => {
-      const matchesInput =
-        course.courseName
-          .toLowerCase()
-          .includes(this.inputValue.toLowerCase()) ||
-        course.courseCode.toLowerCase().includes(this.inputValue.toLowerCase());
+    if (this.selectedSubject === '-- Alla ämnen --') {
+      this.filteredCourses = this.courses;
+    } else {
+      this.filteredCourses = this.courses.filter((course) => {
+        const matchesInput =
+          course.courseName
+            .toLowerCase()
+            .includes(this.inputValue.toLowerCase()) ||
+          course.courseCode
+            .toLowerCase()
+            .includes(this.inputValue.toLowerCase());
 
-      const matchesSubject =
-        this.selectedSubject === '' || course.subject === this.selectedSubject;
+        const matchesSubject =
+          this.selectedSubject === '' ||
+          course.subject === this.selectedSubject;
 
-      return matchesInput && matchesSubject;
-    });
+        return matchesInput && matchesSubject;
+      });
+    }
   }
 
   //Method for sort by course code
@@ -82,11 +89,32 @@ export class HomeComponent {
     });
   }
 
+  //Method for extracting single subjects for select element
   extractSubjects(): void {
     const subjectSet = new Set<string>();
     this.courses.forEach((course) => {
       subjectSet.add(course.subject);
     });
     this.subjects = Array.from(subjectSet);
+    this.subjects.unshift('-- Alla ämnen --');
+  }
+
+  addCourse(course: Course): void {
+    const existingCourses = localStorage.getItem('courses');
+    if (existingCourses) {
+      const parsedCourses = JSON.parse(existingCourses!);
+      if (Array.isArray(parsedCourses)) {
+        const courses: Course[] = [...parsedCourses, course];
+        localStorage.removeItem('courses');
+        localStorage.setItem('courses', JSON.stringify(courses));
+      } else {
+        const courses: Course[] = [parsedCourses, course];
+        localStorage.removeItem('courses');
+        localStorage.setItem('courses', JSON.stringify(courses));
+      }
+      console.log(parsedCourses);
+    } else {
+      localStorage.setItem('courses', JSON.stringify(course));
+    }
   }
 }

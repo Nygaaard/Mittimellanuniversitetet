@@ -25,6 +25,10 @@
   </div>
 </div>
 
+<p class="page">
+  Listar {{ filteredCourses.length }} av {{ courses.length }} möjliga
+</p>
+
 <table>
   <thead>
     <tr>
@@ -42,6 +46,7 @@
       <td>{{ course.points }}</td>
       <td>{{ course.subject }}</td>
       <td><a href="{{ course.syllabus }}" target="_blank">Kursplan</a></td>
+      <button (click)="addCourse(course)" class="btn">Lägg till</button>
     </tr>
   </tbody>
 </table>
