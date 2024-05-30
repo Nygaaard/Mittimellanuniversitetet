@@ -1,52 +1,35 @@
-<h2>Alla kurser:</h2>
-<div class="search-container">
-  <div class="search-div">
-    <label for="filter">Filtrera kurs</label>
-    <br />
-    <input
-      type="text"
-      id="filter"
-      [(ngModel)]="inputValue"
-      (input)="filterCourses()"
-      class="userInput"
-    />
+<div class="home-container">
+  <h1>Välkommen till Kursportalen</h1>
+  <p>
+    Här kan du hitta information om alla våra kurser och skapa ditt personliga
+    ramschema.
+  </p>
+
+  <div class="info-section">
+    <h2>Utforska Kurser</h2>
+    <p>
+      Besök vår <a routerLink="/courses">kursutbud</a>-sida för att se alla
+      tillgängliga kurser och filtrera dem efter dina intressen.
+    </p>
+    <img src="assets/images/pic1.jpg" alt="Studenter" class="info-image" />
   </div>
-  <div class="select-div">
-    <label for="select-subject">Ämne:</label>
-    <select
-      id="select-subject"
-      [(ngModel)]="selectedSubject"
-      (change)="filterCourses()"
-    >
-      <option *ngFor="let subject of subjects" [value]="subject">
-        {{ subject }}
-      </option>
-    </select>
+
+  <div class="info-section">
+    <h2>Skapa ditt Ramschema</h2>
+    <p>
+      Gå till <a routerLink="/framework">ramschema</a>-sidan för att skapa och
+      anpassa ditt eget schema med kurser.
+    </p>
+    <img src="assets/images/pic2.jpg" alt="Ramschema" class="info-image" />
+  </div>
+
+  <div class="info-section">
+    <h2>Utforska mer</h2>
+    <p>
+      Se var våra utbildningar hålls och lär känna våra campus. Klicka
+      <a href="https://www.miun.se/" target="_blank">här</a> för att läsa mer.
+    </p>
+
+    <img src="assets/images/pic3.jpg" alt="Campus" class="info-image" />
   </div>
 </div>
-
-<p class="page">
-  Listar {{ filteredCourses.length }} av {{ courses.length }} möjliga
-</p>
-
-<table>
-  <thead>
-    <tr>
-      <th (click)="sortByCode()">Kurskod</th>
-      <th (click)="sortNyName()">Kursnamn</th>
-      <th (click)="sortByPoints()">Poäng</th>
-      <th (click)="sortBySubject()">Ämne</th>
-      <th>Kursplan</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let course of filteredCourses">
-      <td>{{ course.courseCode }}</td>
-      <td>{{ course.courseName }}</td>
-      <td>{{ course.points }}</td>
-      <td>{{ course.subject }}</td>
-      <td><a href="{{ course.syllabus }}" target="_blank">Kursplan</a></td>
-      <button (click)="addCourse(course)" class="btn">Lägg till</button>
-    </tr>
-  </tbody>
-</table>

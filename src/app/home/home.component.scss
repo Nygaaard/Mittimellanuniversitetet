@@ -1,156 +1,55 @@
-// .search-container {
-//   display: flex;
-//   flex-wrap: wrap;
-//   align-items: center;
-//   margin-bottom: 20px;
-// }
-
-// .search-div,
-// .select-div {
-//   margin-bottom: 10px;
-//   flex: 1 1 100%;
-// }
-
-// label {
-//   font-weight: bold;
-// }
-
-// .userInput,
-// select {
-//   width: 100%;
-//   padding: 8px;
-//   border: 1px solid #ccc;
-//   border-radius: 4px;
-// }
-
-// table {
-//   width: 100%;
-//   border-collapse: collapse;
-// }
-
-// th,
-// td {
-//   padding: 10px;
-//   text-align: left;
-//   border-bottom: 1px solid #ddd;
-// }
-
-// th {
-//   cursor: pointer;
-// }
-
-// a {
-//   color: #007bff;
-//   text-decoration: none;
-// }
-
-// a:hover {
-//   text-decoration: underline;
-// }
-
-// @media screen and (min-width: 768px) {
-//   .search-div,
-//   .select-div {
-//     margin-bottom: 0;
-//     flex: 1 1 auto;
-//   }
-// }
-
-h2 {
-  font-size: 28px;
-  color: #2c3e50;
+.home-container {
   text-align: center;
-  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px;
   margin-top: 50px;
 }
 
-/* Stil för sökcontainer */
-.search-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.home-container h1 {
+  color: #2c3e50;
+  font-size: 36px;
   margin-bottom: 20px;
 }
 
-.search-div,
-.select-div {
-  margin-bottom: 10px;
-}
-
-label {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.userInput,
-select {
-  width: 100%;
-  max-width: 300px;
-  padding: 10px;
-  border: 2px solid #3498db;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-/* Stil för pagen */
-.page {
-  font-size: 16px;
+.home-container p {
+  font-size: 18px;
   color: #34495e;
-  text-align: center;
   margin-bottom: 20px;
 }
 
-/* Tabellstil */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-}
-
-th,
-td {
-  padding: 15px;
-  border: 1px solid #ecf0f1;
+.info-section {
+  margin-top: 30px;
   text-align: left;
 }
 
-th {
-  background-color: #3498db;
-  color: white;
-  cursor: pointer;
+.info-section h2 {
+  color: #3498db;
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
-th:hover {
-  background-color: #61acdd;
+.info-section p {
+  font-size: 16px;
+  color: #34495e;
 }
 
-tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
+.info-section a {
+  color: #3498db;
+  text-decoration: none;
 }
 
-tbody tr:hover {
-  background-color: #eaf2f8;
+.info-section a:hover {
+  text-decoration: underline;
 }
 
-/* Stil för knappar */
-.btn {
-  background-color: #e74c3c;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.info-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 8px;
   margin-top: 10px;
-}
-
-.btn:hover {
-  background-color: #c0392b;
-}
-
-/* Responsiv design */
-@media (min-width: 600px) {
-  .search-container {
-    flex-direction: row;
-    justify-content: space-around;
-  }
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
