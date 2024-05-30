@@ -22,6 +22,7 @@ export class FrameworkComponent {
   ngOnInit() {
     this.courses = this.frameworkservice.getCourses();
 
+    //Calculate total chosen points
     this.totalPoints = this.courses
       .map((course) => parseFloat(course.points))
       .reduce((a, c) => {
