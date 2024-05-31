@@ -11,6 +11,7 @@ h2 {
   justify-content: space-evenly;
   align-items: center;
   margin-bottom: 40px;
+  flex-wrap: wrap;
 }
 
 .search-div,
@@ -18,6 +19,9 @@ h2 {
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 300px;
+  padding: 0 10px;
 }
 
 label {
@@ -86,18 +90,114 @@ tbody tr:hover {
 .btn:hover {
   background-color: rgb(84, 136, 84);
 }
+
 .totalDiv {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  p {
-    color: #34495e;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.totalDiv p {
+  color: #34495e;
+  margin: 10px 0;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}
+
+/* Responsiv design */
+@media (max-width: 768px) {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    border: 1px solid #ecf0f1;
+    margin-bottom: 10px;
+  }
+
+  td {
+    border: none;
+    border-bottom: 1px solid #ecf0f1;
+    position: relative;
+    padding-left: 50%;
+    text-align: right;
+  }
+
+  td:before {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    transform: translateY(-50%);
+    text-align: left;
+    font-weight: bold;
+  }
+
+  td:nth-of-type(1):before {
+    content: "Kurskod";
+  }
+  td:nth-of-type(2):before {
+    content: "Kursnamn";
+  }
+  td:nth-of-type(3):before {
+    content: "Poäng";
+  }
+  td:nth-of-type(4):before {
+    content: "Ämne";
+  }
+  td:nth-of-type(5):before {
+    content: "Kursplan";
+  }
+  td:nth-of-type(6):before {
+    content: "";
   }
 }
 
-@media (min-width: 600px) {
-  .search-container {
-    flex-direction: row;
-    justify-content: space-around;
+@media (max-width: 480px) {
+  h2 {
+    font-size: 24px;
+  }
+
+  .userInput,
+  select {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  th,
+  td {
+    padding: 10px;
+  }
+
+  .btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  td {
+    padding-left: 40%;
+  }
+
+  td:before {
+    left: 10px;
+    width: 30%;
   }
 }

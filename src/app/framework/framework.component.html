@@ -21,5 +21,8 @@
     </tr>
   </tbody>
 </table>
+@if(courses.length === 0) {
+<p class="error">Du har inte valt några kurser än</p>
+}
 
 <p>Total mängd poäng: {{ totalPoints }}</p>
