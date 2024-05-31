@@ -8,14 +8,16 @@ h2 {
 
 .search-container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .search-div,
 .select-div {
   margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 label {
@@ -82,7 +84,15 @@ tbody tr:hover {
 }
 
 .btn:hover {
-  background-color: #c0392b;
+  background-color: rgb(84, 136, 84);
+}
+.totalDiv {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  p {
+    color: #34495e;
+  }
 }
 
 @media (min-width: 600px) {

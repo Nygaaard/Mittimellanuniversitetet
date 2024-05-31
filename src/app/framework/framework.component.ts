@@ -21,13 +21,7 @@ export class FrameworkComponent {
 
   ngOnInit() {
     this.courses = this.frameworkservice.getCourses();
-
-    //Calculate total chosen points
-    this.totalPoints = this.courses
-      .map((course) => parseFloat(course.points))
-      .reduce((a, c) => {
-        return a + c;
-      }, 0);
+    this.totalPoints = this.frameworkservice.getTotalPoints();
   }
 
   //Method for removing course
@@ -43,6 +37,8 @@ export class FrameworkComponent {
       localStorage.setItem('courses', courses);
 
       this.courses = newCourses;
+      //Update total points
+      this.totalPoints = this.frameworkservice.getTotalPoints();
     }
   }
 }

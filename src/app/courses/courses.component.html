@@ -1,4 +1,5 @@
 <h2>Alla kurser:</h2>
+
 <div class="search-container">
   <div class="search-div">
     <label for="filter">Filtrera kurs</label>
@@ -25,9 +26,12 @@
   </div>
 </div>
 
-<p class="page">
-  Listar {{ filteredCourses.length }} av {{ courses.length }} möjliga
-</p>
+<div class="totalDiv">
+  <p class="page">
+    Listar {{ filteredCourses.length }} av {{ courses.length }} möjliga
+  </p>
+  <p>Antal valda poäng: {{ totalPoints }}</p>
+</div>
 
 <table>
   <thead>

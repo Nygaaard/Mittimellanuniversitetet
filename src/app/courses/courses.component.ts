@@ -4,6 +4,7 @@ import { CoursesService } from '../services/courses.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { FrameworkService } from '../services/framework.service';
 
 @Component({
   selector: 'app-courses',
@@ -19,8 +20,12 @@ export class CoursesComponent {
   inputValue: string = '';
   subjects: string[] = [];
   selectedSubject: string = '';
+  totalPoints: number = 0;
 
-  constructor(private courseservive: CoursesService) {}
+  constructor(
+    private courseservive: CoursesService,
+    private frameworkService: FrameworkService
+  ) {}
 
   ngOnInit() {
     this.courseservive.getCourses().subscribe((courses) => {
@@ -28,6 +33,7 @@ export class CoursesComponent {
       this.filteredCourses = courses;
       this.extractSubjects();
     });
+    this.totalPoints = this.frameworkService.getTotalPoints();
   }
 
   //Method for filtering courses
@@ -116,5 +122,6 @@ export class CoursesComponent {
     } else {
       localStorage.setItem('courses', JSON.stringify(course));
     }
+    this.totalPoints = this.frameworkService.getTotalPoints();
   }
 }
