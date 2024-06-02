@@ -1,5 +1,9 @@
 # Mittimellanuniversitetet
 
+# End project for Programmering i Typescript
+
+# By Andreas Nygård
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.5.
 
 ## Development server
